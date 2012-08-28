@@ -139,6 +139,7 @@ DEPENDENCIES
   pg (>= 0.12.0)
   rails (= 3.2.3)
   rails-backbone
+  sass
   sass-rails (~> 3.2.3)
   thin
   uglifier (>= 1.0.3)
