@@ -13,6 +13,8 @@ gem "active_device", "~> 1.2.0"
 gem 'jquery-rails'
 gem 'rails-backbone'
 gem 'devise'
+gem 'sass'
+gem 'omniauth-facebook'
 
 
 # Gems used only for assets and not required
