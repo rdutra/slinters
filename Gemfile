@@ -8,7 +8,7 @@ gem 'rails', '3.2.3'
 gem 'thin'
 gem 'haml'
 gem "haml-rails"
-gem 'pg', ">=0.12.0"
+gem 'pg', "=0.13.2"
 gem "active_device", "~> 1.2.0"
 gem 'jquery-rails'
 gem 'rails-backbone'
