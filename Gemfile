@@ -14,7 +14,10 @@ gem 'jquery-rails'
 gem 'rails-backbone'
 gem 'devise'
 gem 'sass'
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google'
 
 
 
