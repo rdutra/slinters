@@ -10,7 +10,7 @@ class ServiceController < ApplicationController
     @service = current_user.services.find(params[:id])
     @servide.destroy
     
-    redirect_to redirect_to "/"
+    redirect_to url_for :controller => 'application', :action => 'index'
   end
   
   def create
@@ -56,7 +56,8 @@ class ServiceController < ApplicationController
           auth = Service.find_by_provider_and_uid(provider, uid)
           if auth
             flash[:notice] = 'Signed in successfully via ' + provider.capitalize + '.'
-            sign_in_and_redirect(:user, auth.user)
+            sign_in(:user, auth.user)
+            redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:notice], :object => ""
           else
             # check if this user is already registered with this email address; get out if no email has been provided
             if email != ''
@@ -66,7 +67,8 @@ class ServiceController < ApplicationController
                 # map this new login method via a service provider to an existing account if the email address is the same
                 existinguser.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
                 flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account ' + existinguser.email + '. Signed in successfully!'
-                sign_in_and_redirect(:user, existinguser)
+                sign_in(:user, existinguser)
+                redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:notice], :object => ""
               else
                 # let's create a new user: register this user and add this authentication method for this user
                 name = name[0, 39] if name.length > 39             # otherwise our user validation will hit us
@@ -84,11 +86,12 @@ class ServiceController < ApplicationController
   
                 # flash and sign in
                 flash[:myinfo] = 'Your account on CommunityGuides has been created via ' + provider.capitalize + '. In your profile you can change your personal information and add a local password.'
-                sign_in_and_redirect(:user, user)
+                sign_in(:user, user)
+                redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:myinfo], :object => ""
               end
             else
               flash[:error] =  service_route.capitalize + ' can not be used to sign-up on CommunityGuides as no valid email address has been provided. Please use another authentication provider or use local sign-up. If you already have an account, please sign-in and add ' + service_route.capitalize + ' from your profile.'
-              redirect_to new_user_session_path
+              redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:error], :object => ""
             end
           end
         else
@@ -98,19 +101,19 @@ class ServiceController < ApplicationController
           if !auth
             current_user.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
             flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account.'
-            redirect_to "/"
+            redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:notice], :object => ""
           else
             flash[:notice] = service_route.capitalize + ' is already linked to your account.'
-            redirect_to "/"
+            redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:notice], :object => ""
           end  
         end  
       else
         flash[:error] =  service_route.capitalize + ' returned invalid data for the user id.'
-        redirect_to new_user_session_path
+        redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:error], :object => ""
       end
     else
       flash[:error] = 'Error while authenticating via ' + service_route.capitalize + '.'
-      redirect_to new_user_session_path
+      redirect_to url_for :controller => 'page', :action => 'profile', :status => flash[:error], :object => ""
     end
   end
 end

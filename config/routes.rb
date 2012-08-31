@@ -6,8 +6,6 @@ Slinters::Application.routes.draw do
  match '/auth/:service/callback' => 'service#create'
  resources :service, :only => [:index, :create]
  
- 
- match "/login" => "authorization#login"
- match "/register" => "authorization#register"
+ match ':controller(/:action)'
  
 end

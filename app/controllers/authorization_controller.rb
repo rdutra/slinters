@@ -12,14 +12,14 @@ class AuthorizationController < ApplicationController
           sign_in(:user, user)
         end
       end
-      
       status = "ok"
       object = valid
     else
       status = "warning"
       object = "The user is signed in"
     end
-    render :json => Utils::Output.create(status,object)
+    redirect_to url_for :controller => "page", :action => "profile", :status => status, :object => object
+    #render :json => Utils::Output.create(status,object)
   end
   
   def register 
