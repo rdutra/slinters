@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
      end
    else
      #render :layout => "application_desktop", :action =>"admin_index"
-     render :layout => "application"
+     #render :layout => "application"
+     render :layout => "application_login"
    end
   end
 end
