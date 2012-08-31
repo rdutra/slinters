@@ -10,7 +10,7 @@ class ServiceController < ApplicationController
     @service = current_user.services.find(params[:id])
     @servide.destroy
     
-    redirect_to redirect_to "/service"
+    redirect_to redirect_to "/"
   end
   
   def create
@@ -77,8 +77,6 @@ class ServiceController < ApplicationController
                 # add this authentication service to our new user
                 user.services.build(:provider => provider, :uid => uid, :uname => name, :uemail => email)
                 
-                
-  
                 # do not send confirmation email, we directly save and confirm the new record
                 user.skip_confirmation!
                 user.save!
@@ -95,16 +93,15 @@ class ServiceController < ApplicationController
           end
         else
           # the user is currently signed in
-          
           # check if this service is already linked to his/her account, if not, add it
           auth = Service.find_by_provider_and_uid(provider, uid)
           if !auth
             current_user.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
             flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account.'
-            redirect_to "/service"
+            redirect_to "/"
           else
             flash[:notice] = service_route.capitalize + ' is already linked to your account.'
-            redirect_to "/service"
+            redirect_to "/"
           end  
         end  
       else
