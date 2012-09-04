@@ -15,17 +15,17 @@
     =form_tag("/authorization/login", :method => 'post', :id =>"form0") do
       .login_form
         .login_fields
-          %label{:for => "email_login"} Email :
+          %label{:for => "email"} Email :
           %input#email{:type => "text"}/
           %br/
-          %label{:for => "email_login"} Password :
-          %input#password{:type => "text"}/
+          %label{:for => "password"} Password :
+          %input#password{:type => "password"}/
         .login_action
           %input#login_btn{:type => "submit", :value => "Login"}/
       .clear     
       .landing_links
         %a{:href => "users/password/new"} Forgot your password?
-        %a{:href => "users/new"} Register
+        %a{:href => "/application/register"} Register
       .social_login
         %a{:href => "auth/facebook"}
           %img{:src => "assets/fb-login-button.png"}/

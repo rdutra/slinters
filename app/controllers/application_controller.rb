@@ -20,8 +20,12 @@ class ApplicationController < ActionController::Base
        #render :layout => "application_other"
      end
    else
-     #render :layout => "application_desktop", :action =>"admin_index"
-     render :layout => "application"
+     render :layout => "application_login", :action =>"index"
+     #render :layout => "application"
    end
+  end
+  
+  def register
+    render :layout => "application_login"
   end
 end
