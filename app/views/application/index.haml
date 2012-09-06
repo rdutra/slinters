@@ -6,16 +6,15 @@
       %p Donec volutpat sollicitudin malesuada. Nunc dapibus tempus erat non pretium. Aliquam ullamcorper molestie ullamcorper. Nulla quam nibh, sollicitudin egestas euismod mattis, accumsan quis dui. Quisque eget dignissim enim. Quisque fermentum semper sollicitudin. Donec vehicula dictum dolor, accumsan tempor leo elementum ut. Donec sem erat, dictum at iaculis ac, posuere in turpis. Donec orci turpis, pharetra eget accumsan non, iaculis gravida dui.
   .landing_form
     =form_tag "/authorization/login" do
-      =field_set_tag  do
-        .login_form
-          .login_fields
-            =label_tag :email, "Email :"
-            =text_field_tag :email
-            %br
-            =label_tag :password, "Password :"
-            =password_field_tag :password
-          .login_action
-            %input#login_btn{:type => "submit", :value => "Login"}/
+      .login_form
+        .login_fields
+          =label_tag :email, "Email :"
+          =text_field_tag :email
+          %br
+          =label_tag :password, "Password :"
+          =password_field_tag :password
+        .login_action
+          %input#login_btn{:type => "submit", :value => "Login"}/
     .clear     
     .landing_links
       %a{:href => "users/password/new"} Forgot your password?
