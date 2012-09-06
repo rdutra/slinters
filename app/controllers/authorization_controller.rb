@@ -30,6 +30,7 @@ class AuthorizationController < ApplicationController
     user.password_confirmation =params[:password_confirmation]
     user.save!
     user.confirm!
+    sign_in(:user, user)
     redirect_to url_for :controller => "page", :action => "profile"
   end
   
