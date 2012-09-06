@@ -1,20 +1,27 @@
 .landing_top
 .landing_content
   .landing_info
-    .internal_info
-      =form_tag "/authorization/register" do
-        =field_set_tag "Register"  do
-          =label_tag :name, "Name :"
-          =text_field_tag :name
-          =label_tag :email, "Email :"
-          =text_field_tag :email
-          =label_tag :password, "Password :"
-          =password_field_tag :password
-          =label_tag :password_confirmation, "Re-Type Password :"
-          =password_field_tag :password_confirmation
-          =submit_tag "Register"
-      .register_info
-        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum ornare consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam et ante eu lorem rhoncus rutrum sed quis tellus. Donec vel diam risus, tincidunt adipiscing odio. Nullam mi diam, lacinia nec pulvinar sed, cursus molestie velit. Proin a justo arcu, at adipiscing magna. In quis lacus felis. Cras pulvinar sollicitudin nulla, quis ultrices ipsum porttitor pellentesque. Duis rhoncus sagittis enim in porttitor.
-        %p Donec volutpat sollicitudin malesuada. Nunc dapibus tempus erat non pretium. Aliquam ullamcorper molestie ullamcorper. Nulla quam nibh, sollicitudin egestas euismod mattis, accumsan quis dui. Quisque eget dignissim enim. Quisque fermentum semper sollicitudin. Donec vehicula dictum dolor, accumsan tempor leo elementum ut. Donec sem erat, dictum at iaculis ac, posuere in turpis. Donec orci turpis, pharetra eget accumsan non, iaculis gravida dui.
+    =field_set_tag "Register"  do
+      .form_right
+        .internal_info
+          =form_tag "/authorization/register" do 
+            =label_tag :name, "Name :"
+            =text_field_tag :name
+            %br
+            =label_tag :email, "Email :"
+            =text_field_tag :email
+            %br
+            =label_tag :password, "Password :"
+            =password_field_tag :password
+            %br
+            =label_tag :password_confirmation, "Re-Type Password :"
+            =password_field_tag :password_confirmation
+            %br
+            =submit_tag "Register"
+      .form_left
+          
+  .register_info
+    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam bibendum ornare consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam et ante eu lorem rhoncus rutrum sed quis tellus. Donec vel diam risus, tincidunt adipiscing odio. Nullam mi diam, lacinia nec pulvinar sed, cursus molestie velit. Proin a justo arcu, at adipiscing magna. In quis lacus felis. Cras pulvinar sollicitudin nulla, quis ultrices ipsum porttitor pellentesque. Duis rhoncus sagittis enim in porttitor.
+    %p Donec volutpat sollicitudin malesuada. Nunc dapibus tempus erat non pretium. Aliquam ullamcorper molestie ullamcorper. Nulla quam nibh, sollicitudin egestas euismod mattis, accumsan quis dui. Quisque eget dignissim enim. Quisque fermentum semper sollicitudin. Donec vehicula dictum dolor, accumsan tempor leo elementum ut. Donec sem erat, dictum at iaculis ac, posuere in turpis. Donec orci turpis, pharetra eget accumsan non, iaculis gravida dui.
 .landing_bottom
 
