@@ -1,5 +1,5 @@
 class AuthorizationController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate, :except => [:login,:register]
   def login
     valid = false
     status = ""
@@ -35,9 +35,13 @@ class AuthorizationController < ApplicationController
   end
   
   def logout
-    puts current_user.inspect
-    sign_out_and_redirect(current_user)
+    if user_signed_in?
+      sign_out_and_redirect(current_user)
+    else
+      redirect_to :controller => "application", :action => "index"
+    end
     
+    #http://localhost:3000/page/profile?object=false&status=ok
   end
 end
 
