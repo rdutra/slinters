@@ -20,12 +20,21 @@ class ApplicationController < ActionController::Base
        #render :layout => "application_other"
      end
    else
-     render :layout => "application_login", :action =>"index"
+     if user_signed_in?
+      redirect_to url_for :controller => "page", :action => "profile"
+     else  
+      render :layout => "application_login", :action =>"index"
+     end
+     
      #render :layout => "application"
    end
   end
   
   def register
     render :layout => "application_login"
+  end
+  
+  def landing
+    
   end
 end
