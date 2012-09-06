@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include ActiveDevice
   skip_before_filter :set_mobile_format #we're skipping the :mobile request
-  
+ 
   def index
+    
     if is_mobile_device?
      case device_model
      when "iPhone"

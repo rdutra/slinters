@@ -33,6 +33,12 @@ class AuthorizationController < ApplicationController
     redirect_to url_for :controller => "page", :action => "profile"
     #render :json => user
   end
+  
+  def logout
+    puts current_user.inspect
+    sign_out_and_redirect(current_user)
+    
+  end
 end
 
 
