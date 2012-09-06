@@ -1,3 +1,3 @@
 class Expense < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :date, :concept, :amount, :paymethod, :type
 end
