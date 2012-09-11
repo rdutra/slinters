@@ -1,21 +1,35 @@
-<div class="transaction-selector">
-	<input type="radio" name="type-select" value="Expense" id="rdo_expense" class="rdo_transact_type"/> Expense
-	<br/>
+<div class="transaction_selector">
+	<input type="radio" name="type-select" value="expense" id="rdo_expense" class="rdo_transact_type"/> Expense
 	<input type="radio" name="type-select" value="income" id="rdo_income" class="rdo_transact_type" /> Income
 </div>
+<br/>
 <div>
-	<div class="expense" style="display:none">
-		Expense
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
+	<div class="transaction">
+		<div class="transaction_labels">
+			<label for="txt_date_exp" class="transaction_label"> Date :</label>
+			<br/>
+			<label for="txt_concept_exp" class="transaction_label"> Concept :</label>
+			<br/>
+			<label for="txt_entity_exp" class="transaction_label"> Payee :</label>
+			<br/>
+			<label for="txt_entity_exp" class="transaction_label"> Amount :</label>
+		</div>
+
+		<div class="transaction_fields">
+			<input id="txt_date_exp" type="date" class="transaction_date"/>
+			<br/>
+			<input id="txt_concept_exp" type="text" class="transaction_concept"/>
+			<br/>
+			<input id="txt_payee_exp" type="text" class="transaction_payee"/>
+			<br/>
+			<input id="txt_amount_exp" type="text" class="transaction_amount"/>
+		</div>
+		<div style="clear:both">
+			
+		</div>
+		<div class="transaction_actions">
+			<a href="#" class="transaction_submit" id="transaction_submit"> Submit </a>
+		</div>
 	</div>
-	<div class="income" style="display:none">
-		Income
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
-		<input type="text" class="transaction-input"/>
-	</div>
+
 </div>
