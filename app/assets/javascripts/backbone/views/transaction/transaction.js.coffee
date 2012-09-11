@@ -5,6 +5,22 @@ class Slinters.Views.TransactionView extends Backbone.View
     $('.dashboard-left').html @.template #@model.toJSON()
     $('#transaction_submit').click @.submit_transaction
     
+    $("input#txt_payee_exp").autocomplete 
+      source: (request, response) ->
+        $.ajax
+          type: "POST"
+          url: "/entity/search_entity"
+          dataType: "json"
+          data:
+            searchstring: request.term
+            #authenticity_token: $('#auth_token').val()
+          success: (data) ->
+            response data
+      select: (event, ui) ->
+        #$('#task_recruiter_id').val(ui.item.value)
+        #$('#task_assigned_to').val(ui.item.label)
+        #event.preventDefault()
+    
   submit_transaction: ->
     view = new Slinters.Views.TransactionView
     switch $("input[name='type-select']:checked").val()
@@ -27,6 +43,6 @@ class Slinters.Views.TransactionView extends Backbone.View
         entity: $('#txt_payee_exp').val()        
         description: " Description "
       success: (data) ->
-        #response = JSON.parse(data.responseText)
+        response = eval(data)
         alert('entered successfully')
     
