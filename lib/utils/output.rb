@@ -6,7 +6,7 @@ module Utils
       def create(status, object)
           output = {
             :status => status,
-            :object => object
+            :message => object
           }
           return output
       end

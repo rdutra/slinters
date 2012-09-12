@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :articles, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :ratings, :dependent => :destroy
+  has_many :incomes, :dependent => :destroy
+  has_many :expenses, :dependent => :destroy
   
   belongs_to :country
   
