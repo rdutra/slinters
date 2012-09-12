@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911144043) do
+ActiveRecord::Schema.define(:version => 20120912134457) do
 
   create_table "entities", :force => true do |t|
     t.string   "name"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20120911144043) do
     t.datetime "date"
     t.float    "amount"
     t.string   "concept"
-    t.string   "entity"
     t.string   "description"
     t.integer  "user_id"
+    t.integer  "entity_id"
   end
 
   create_table "services", :force => true do |t|
