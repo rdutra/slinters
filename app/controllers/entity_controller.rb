@@ -7,8 +7,8 @@ class EntityController < ApplicationController
     response = []
     unless searchstring.nil?
       @results = Entity.search_autocomplete searchstring
-      @results.each do |usr|
-        response.push({:label => usr[:username], :value => usr[:sfid]})
+      @results.each do |entity|
+        response.push({:label => entity[:name]})
       end
     end
     render :text => response.to_json
