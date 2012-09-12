@@ -4,12 +4,13 @@ class PageController < ApplicationController
   end
   
   def add_income
+    entity = Entity.search params[:entity]
     new_income = {
       :user_id => current_user[:id],
       :date => params[:date],
       :amount => params[:amount],
       :concept => params[:concept],
-      :entity => params[:entity],
+      :entity => entity.id,
       :description => params[:description]
     }
     

@@ -16,10 +16,6 @@ class Slinters.Views.TransactionView extends Backbone.View
             #authenticity_token: $('#auth_token').val()
           success: (data) ->
             response data
-      select: (event, ui) ->
-        #$('#task_recruiter_id').val(ui.item.value)
-        #$('#task_assigned_to').val(ui.item.label)
-        #event.preventDefault()
     
   submit_transaction: ->
     view = new Slinters.Views.TransactionView
