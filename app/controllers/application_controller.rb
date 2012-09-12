@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include ActiveDevice
   skip_before_filter :set_mobile_format #we're skipping the :mobile request
-  before_filter :authenticate, :except => [:index, :register]
+  #before_filter :authenticate, :except => [:index, :register]
  
   def index
     

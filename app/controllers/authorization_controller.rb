@@ -43,6 +43,12 @@ class AuthorizationController < ApplicationController
     
     #http://localhost:3000/page/profile?object=false&status=ok
   end
+  
+  def provider_confirm
+    unless params[:email].nil?
+      
+    end
+  end
 end
 
 

@@ -1,4 +1,5 @@
 class ServiceController < ApplicationController
+  #before_filter :authenticate, :except => [:index, :create]
   def index
     #get all authentication services assigned to the curent user
     @services = current_user.services.all
@@ -30,7 +31,7 @@ class ServiceController < ApplicationController
         omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
       elsif service_route == 'twitter'
-        email = ''    # Twitter API never returns the email address
+        email = 'example@twitter.com'    # Twitter API never returns the email address
         omniauth['info']['name'] ? name =  omniauth['info']['name'] : name = ''
         omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''

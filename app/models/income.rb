@@ -1,7 +1,7 @@
 class Income < ActiveRecord::Base
-  attr_accessible :user_id, :date, :amount, :concept, :entity, :description
+  attr_accessible :user_id, :date, :amount, :concept, :entity_id, :description
   belongs_to :user
-  validates :date, :presence => true 
+  belongs_to :entity
   validates :amount, :presence => true 
   validates :concept, :presence => true, :length => { :maximum => 64 }
   validates :entity, :presence => true 
