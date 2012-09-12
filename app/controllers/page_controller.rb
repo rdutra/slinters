@@ -4,21 +4,25 @@ class PageController < ApplicationController
   end
   
   def add_income
-    entity = Entity.search params[:entity]
-    new_income = {
-      :user_id => current_user[:id],
-      :date => params[:date],
-      :amount => params[:amount],
-      :concept => params[:concept],
-      :entity => entity.id,
-      :description => params[:description]
-    }
-    
-    income = Income.create new_income
-    render :json => Utils::Output.create("OK", income)
+    result = Utils::Output.create("Error", nil)
+    unless params[:entity].nil?
+      entity = Entity.search params[:entity]
+      new_income = {
+        :user_id => current_user[:id],
+        :date => params[:date],
+        :amount => params[:amount],
+        :concept => params[:concept],
+        :entity_id => entity.id,
+        :description => params[:description]
+      }
+      income = Income.create new_income
+      result = Utils::Output.create("Ok", income[:id])
+    end
+    render :json => result
   end
   
   def add_expense
+    expense = Expense
     
   end
   
