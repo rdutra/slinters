@@ -50,11 +50,48 @@ class PageController < ApplicationController
   end
   
   def edit_income
-    
+    result = Utils::Output.create("Error", nil)
+    entity = Entity.search params[:entity]
+    unless entity.nil?
+      new_income = {
+        :user_id => current_user[:id],
+        :date => params[:date],
+        :amount => params[:amount],
+        :concept => params[:concept],
+        :entity_id => entity.id,
+        :description => params[:description]
+      }
+      income = Income.update(params[:income_id],new_income)
+      if income.valid?
+        result = Utils::Output.create("Ok", income[:id].to_s+" <- updated")
+      else
+        result = Utils::Output.create("Error", income.errors)
+      end
+    end
+    render :json => result
   end
   
   def edit_expense
-    
+    result = Utils::Output.create("Error", nil)
+    entity = Entity.search params[:entity]
+    unless entity.nil?
+      new_expense = {
+        :user_id => current_user[:id],
+        :entity_id => entity.id,
+        :date => params[:date],
+        :amount => params[:amount],
+        :concept => params[:concept],
+        :paymethod => params[:paymethod],
+        :type => params[:type]
+      }
+      expense = Expense.update(params[:expense_id],new_expense)
+      if expense.valid?
+        result = Utils::Output.create("Ok", expense[:id].to_s+" <- updated")
+      else
+        result = Utils::Output.create("Error", expense.errors)
+      end
+    end
+    render :json => result
   end
   
   def delete_income
