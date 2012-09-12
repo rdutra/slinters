@@ -29,11 +29,14 @@
   //border: 1px solid
   
 .landing_form
+  background-color: gray
+  border-radius: 10px 10px 10px 10px
   float: left
-  width: 40%
-  height: 86%
-  padding-top: 4%
+  height: 33%
+  margin-top: 2%
+  padding-top: 3%
   text-align: right
+  width: 36%
   
 .login_form
   width: 90%
@@ -65,6 +68,35 @@
   width: 30%
   float: left
   text-align: center
+  margin-top: 3%
+  
+.login_button
+  -moz-box-shadow: inset 0px 1px 0px 0px #000000
+  -webkit-box-shadow: inset 0px 1px 0px 0px #000000
+  box-shadow: inset 0px 1px 0px 0px #000000
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff9d00), color-stop(1, #bd6704) )
+  background: -moz-linear-gradient( center top, #ff9d00 5%, #bd6704 100% )
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9d00', endColorstr='#bd6704')
+  background-color: #ff9d00
+  -moz-border-radius: 6px
+  -webkit-border-radius: 6px
+  border-radius: 6px
+  border: 4px hidden #e0e0e0
+  display: inline-block
+  color: #000000
+  font-family: arial
+  font-size: 15px
+  font-weight: bold
+  padding: 10% 15%
+  text-decoration: none
+.login_button:hover 
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bd6704), color-stop(1, #ff9d00) )
+  background: -moz-linear-gradient( center top, #bd6704 5%, #ff9d00 100% )
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bd6704', endColorstr='#ff9d00')
+  background-color: #bd6704
+.login_button:active
+  position: relative
+  top: 1px
   
 .social_login
   text-align: center

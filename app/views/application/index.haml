@@ -14,7 +14,7 @@
           =label_tag :password, "Password :"
           =password_field_tag :password
         .login_action
-          %input#login_btn{:type => "submit", :value => "Login"}/
+          %a{:href => "#", :class =>"login_button", :onclick => "document.forms[0].submit()"} Login
     .clear     
     .landing_links
       %a{:href => "users/password/new"} Forgot your password?
