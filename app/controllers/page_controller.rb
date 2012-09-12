@@ -5,8 +5,8 @@ class PageController < ApplicationController
   
   def add_income
     result = Utils::Output.create("Error", nil)
-    unless params[:entity].nil? and params[:entity].empty?
-      entity = Entity.search params[:entity]
+    entity = Entity.search params[:entity]
+    unless entity.nil?
       new_income = {
         :user_id => current_user[:id],
         :date => params[:date],
@@ -16,13 +16,36 @@ class PageController < ApplicationController
         :description => params[:description]
       }
       income = Income.create new_income
-      result = Utils::Output.create("Ok", income[:id])
+      if income.valid?
+        result = Utils::Output.create("Ok", income[:id])
+      else
+        result = Utils::Output.create("Error", income.errors)
+      end
     end
     render :json => result
   end
   
   def add_expense
-    expense = Expense
+    result = Utils::Output.create("Error", nil)
+    entity = Entity.search params[:entity]
+    unless entity.nil?
+      new_expense = {
+        :user_id => current_user[:id],
+        :entity_id => entity.id,
+        :date => params[:date],
+        :amount => params[:amount],
+        :concept => params[:concept],
+        :paymethod => params[:paymethod],
+        :type => params[:type]
+      }
+      expense = Expense.create new_expense
+      if expense.valid?
+        result = Utils::Output.create("Ok", expense[:id])
+      else
+        result = Utils::Output.create("Error", expense.errors)
+      end
+    end
+    render :json => result
     
   end
   
