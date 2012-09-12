@@ -7,12 +7,17 @@ class Slinters.Views.ProfilePageView extends Backbone.View
     
   # the events hash does not work because it's called before the view has rendered :S  
   events: {
-      "click #new_transact" : "render_transact"
+      "click #new_transact"  : "render_transact",
+      "click #transact_list" : "render_list"
   }
   
   render_transact: ->
     trs = new Slinters.Views.TransactionView
     trs.render()
+    
+  render_list: ->
+    trsl = new Slinters.Views.TransactionListView
+    trsl.render()
   
   render_report: ->
     
@@ -22,5 +27,6 @@ class Slinters.Views.ProfilePageView extends Backbone.View
     $('#bottom_bar').html @.template_bottom
     # Binding of events manually
     $('#new_transact').click @.render_transact
+    $('#transact_list').click @.render_list
 
   
