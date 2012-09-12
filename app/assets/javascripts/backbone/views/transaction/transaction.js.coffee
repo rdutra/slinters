@@ -19,29 +19,26 @@ class Slinters.Views.TransactionView extends Backbone.View
             response data
     
   submit_transaction: ->
-    view = new Slinters.Views.TransactionView
     switch $("input[name='type-select']:checked").val()
       when "expense"
-        view.create_transaction "expense"
+        expense = new Slinters.Models.Expense({
+          date:$('#txt_date_exp').val(),
+          amount: $('#txt_amount_exp').val(),
+          concept: $('#txt_concept_exp').val(),
+          entity: $('#txt_payee_exp').val(),
+          description: " Description "})
+        expense.save()
       when "income"
-        view.create_transaction "income"
+        income = new Slinters.Models.Income({
+          date:$('#txt_date_exp').val(),
+          amount: $('#txt_amount_exp').val(),
+          concept: $('#txt_concept_exp').val(),
+          entity: $('#txt_payee_exp').val(),
+          description: " Description "})
+        income.save()
       else
         alert("you need to specify a transaction type")
         
-  create_transaction: (type) ->
-    $.ajax
-      type: "POST"
-      url: "/page/add_" + type
-      data:
-        #authenticity_token: $('#auth_token').val()
-        date: $('#txt_date_exp').val()
-        amount: $('#txt_amount_exp').val()
-        concept: $('#txt_concept_exp').val()
-        entity: $('#txt_payee_exp').val()        
-        description: " Description "
-      success: (data) ->
-        response = eval(data)
-        alert('entered successfully')
     
 class Slinters.Views.TransactionListView extends Backbone.View
   template: JST["backbone/templates/transaction/transaction_list_big"]
