@@ -2,6 +2,7 @@ class Slinters.Views.TransactionView extends Backbone.View
   template: JST["backbone/templates/transaction/new_transaction"]
   
   render: ->
+    $('.dashboard_single').html ''
     $('.dashboard-left').html @.template #@model.toJSON()
     $('#transaction_submit').click @.submit_transaction
     
@@ -42,3 +43,10 @@ class Slinters.Views.TransactionView extends Backbone.View
         response = eval(data)
         alert('entered successfully')
     
+class Slinters.Views.TransactionListView extends Backbone.View
+  template: JST["backbone/templates/transaction/transaction_list_big"]
+  
+  render: ->
+      $('.dashboard_single').html @.template
+      $('.dashboard-left').html ''
+      $('.dashboard-right').html ''
