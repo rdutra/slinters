@@ -5,7 +5,7 @@ class PageController < ApplicationController
   
   def add_income
     result = Utils::Output.create("Error", nil)
-    unless params[:entity].nil?
+    unless params[:entity].nil? and params[:entity].empty?
       entity = Entity.search params[:entity]
       new_income = {
         :user_id => current_user[:id],
