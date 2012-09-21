@@ -39,7 +39,12 @@ class Slinters.Views.TransactionView extends Backbone.View
       else
         alert("you need to specify a transaction type")
         
+class Slinters.Views.TransactionItemView extends Backbone.View
+  template: JST["backbone/templates/transaction/transaction_list_row_big"]
+  
+  render: ->
     
+  
 class Slinters.Views.TransactionListView extends Backbone.View
   template: JST["backbone/templates/transaction/transaction_list_big"]
   
